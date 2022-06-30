@@ -1,0 +1,21 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <script src="../static/js/login_alert.js"></script>
+</head>
+<body>
+{% block head %}{% endblock %}
+<div class="login-card">
+<h2>Login</h2>
+    <form method="post">
+        <p><input class="login-email" type=email name=email>
+        <p><input class="input-password" type=password name=password>
+        <p><input class="button-4" role="button" type=submit value=Login>
+    </form>
+</div>
+</body>
+</html>

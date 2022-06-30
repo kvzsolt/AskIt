@@ -1,0 +1,44 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Answer</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+<h1>Question to Answer!</h1>
+{% for data in question %}
+<p><strong>Title</strong>
+    <br><br>{{ data.title }}
+</p>
+<br>
+<p><strong>Message</strong>
+    <br><br>{{ data.message }}
+</p>
+<br>
+<p><strong>Image</strong>
+    <br><br>{{ data.image }}
+</p>
+<br>
+
+<h2>Your Answer</h2>
+<form method="post" action="/question/{{ data.id }}/new-answer">
+    <label for="Answer">Answer</label><br>
+    <textarea id="Answer" name="message" rows="4" cols="60" required></textarea>
+    <br><br>
+    <p><label>Image to add</label><br>
+    <input type="file" name='image' accept="image/jpeg" accept="image/png"></p>
+    <input type="hidden" name="question_id" value="{{ data.id }}">
+
+    {% if 'email' in session %}
+        <button type="submit" style="height:50px; width:250px">Add new Answer</button>
+    {% else %}
+        <a href="{{ url_for('login') }}" style="height:50px; width:250px">Please login in!</a>
+    {% endif %}
+</form>
+{% endfor %}
+
+</body>
+</html>

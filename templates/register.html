@@ -1,0 +1,25 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <script src="static/js/register.js"></script>
+</head>
+<body>
+{% block head %}{% endblock %}
+    <div class="reg-div">
+        <h2>Registration</h2>
+        <form action="/register" method="post" name="registerr">
+            <label for="username">Email:</label>
+            <input class="email" type="email" id="username" name="email" type="text"></br>
+            <label for="password">Password:</label>
+            <input class="password" type="password" id="password" name="password" type="text"></br>
+            <label for="password2">Password again:</label>
+            <input class="password2" type="password" id="password2" name="password2" type="text"></br></br>
+            <button class="button-4" onclick="password_alert(document.registerr.password, document.registerr.password2)" type="submit">Registration</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add tag</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+<h1>Add tag to question</h1>
+<br>
+{% for question in question %}
+    <h2>{{ question.title }}</h2>
+    <br>
+    <h3>{{ question.message }}</h3>
+    {% endfor %}
+
+<br>
+<form method="POST">
+<input name="new-tag", type="text", maxlength="20">
+<br>
+<select name="existing-tag">
+    {% for tag in tags %}
+        <option value="{{ tag.name }}">{{ tag.name }}</option>
+    {% endfor %}
+</select>
+<button type="submit">Add Tag</button>
+</form>
+
+</body>
+</html>

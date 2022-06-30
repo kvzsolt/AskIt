@@ -1,0 +1,36 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>List Questions</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Submission Time</th>
+            <th>View Number</th>
+            <th>Vote Number</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Image</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.submission_time }}</td>
+            <td>{{ row.view_number }}</td>
+            <td>{{ row.vote_number }}<a href="{{ url_for('route_question_votes', question_id=row.id, vote="+") }}">+1</a><a href="{{ url_for('route_question_votes', question_id=row.id, vote="-") }}">-1</a></td>
+            <td><a  href="{{ url_for('route_question_id', question_id=row.id ) }}">{{ row.title }}</a></td>
+            <td>{{ row.message }}</td>
+            <td>{{ row.image }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+<a href = "/list"> All questions</a>
+</html>

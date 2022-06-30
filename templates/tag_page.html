@@ -1,0 +1,22 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tag Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+<table>
+    <h1>Tags</h1>
+        <tr><th>Tag</th>
+        <th>Number of questions</th></tr>
+    {% for tag in tags %}
+        <tr><td>{{ tag.name }}</td>
+        <td>{{ tag.num_of_use }}</td></tr>
+    {% endfor %}
+</table>
+<a href="/list">Back</a>
+</body>
+</html>

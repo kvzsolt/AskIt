@@ -1,0 +1,15 @@
+{% extends "add_question.html" %}
+{% block form %}
+    {% for data in question %}
+<form action="#" method="POST">
+    <p><label>{{ 'Title' }}</label><br>
+    <input type="text" name='title' required minlength="5" value="{{ question.title }}"></p>
+    <p><label>{{ 'Message' }}</label><br>
+    <textarea name='message' rows = "5" cols = "60" required>{{ question.message }}</textarea></p>
+    <p><label>{{ 'Image' }}</label></p>
+    <p><input type="file" name='image' accept="image/jpeg" accept="image/png"></p>
+    <p><button type="submit">Edit question</button></p>
+</form>
+    <a href="{{ url_for('route_question_id', question_id=data.id) }}">Back</a>
+    {% endfor %}
+{% endblock %}

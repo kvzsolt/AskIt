@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AskMate3</title>
+</head>
+<body>
+{% block head %}
+
+    <div class="menu">
+        <div class="menu-left">
+            <form action="/tags">
+                <button class="button-10" role="button" type="submit">Tags</button>
+            </form>
+            <a href="{{ url_for('route_add_question') }}">New question</a>
+
+        </div>
+        <div class="menu-middle">
+
+            <div class="main-title-div">
+                <div class ="main-title">
+                    <h1 class="title">LIST</h1><h2 class="title2">OF QUESTIONS</h2>
+                </div>
+            </div>
+
+        </div>
+        <div class="menu-right">
+
+    {% if 'email' in session %}
+    <div class="login-div">
+        {% for user in users %}
+            <span><a href="{{ url_for('specific_user_questions', user_id=user.id) }}">{{ log }}</a></span>
+        {% endfor %}
+        <span> | </span>
+        <a href="{{ url_for('logout') }}">Logout </a>
+        <a href="{{ url_for('users_list') }}">Users</a>
+    </div>
+    {% else %}
+    <div class="login-div">
+        <a href="{{ url_for('login') }}">Login</a>
+        <span> | </span>
+
+        <a href="/register">Registration </a>
+    </div>
+    {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+</body>
+</html>

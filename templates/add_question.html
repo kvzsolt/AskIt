@@ -1,0 +1,30 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write your question!</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+{% block form %}
+<div class="add-question">
+    <form action="/add-question" method="POST">
+    <h2>Add new question</h2>
+    <p><label>{{ 'Title' }}</label><br>
+    <input type="text" name='title' required minlength="5"></p>
+    <p><label>{{ 'Message' }}</label><br>
+    <textarea class="add-question-message" name='message' rows = "5" cols = "60" required></textarea></p>
+    <p><label>{{ 'Image' }}</label></p>
+    <p><input type="file" name='image' accept="image/jpeg" accept="image/png"></p>
+    <input type="hidden" name="view_number" value="0">
+    <input type="hidden" name="vote_number" value="0">
+    <p><button class="button-4" type="submit">Add question</button></p>
+    </form>
+
+    {% endblock %}
+</div>
+<a href="/list">Back</a>
+</body>
+</html>

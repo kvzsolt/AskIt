@@ -1,0 +1,98 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>List Question answers</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+<br>
+    {% for data in question %}
+    <form action="/question/{{ data.id }}/delete" METHOD="POST">
+        <button class="button-10" type="submit">Delete</button>
+    </form>
+        <h1>{{ data.title }}</h1>
+    <p>{{ data.message }}</p> <br>
+    {% for tag in tags %}
+        <h5>{{ tag.name }}<form action="/question/{{ data.id }}/tag/{{ tag.id }}/delete"><button class="button-10" type="submit">Delete tag</button></form></h5>
+        {% endfor %}
+        <form action="{{ url_for('add_tag', question_id=data.id) }}" method="GET"><button class="button-10" type="submit">Add tag</button></form> <br>
+    <a href="{{ url_for('route_edit_question', question_id=data.id) }}">Edit question</a>
+    <br/><br/><br/>
+    <p><strong>Answers:</strong></p>
+
+    <table class="answers-table">
+        <tr>
+            <th>Submission Time</th>
+            <th>Message</th>
+            <th>Vote Number</th>
+            <th>Image</th>
+            <th>Is Answer Accepted</th>
+        </tr>
+        {% for answer in answers %}
+
+        <tr>
+            <td>{{ answer.submission_time }}</td>
+            <td><strong>{{ answer.message }}</strong></td>
+            <td>{{ answer.vote_number }}
+                <a href="{{ url_for('answer_vote', answer_id=answer.id, vote="+", user_id=answer.user_id) }}">+1</a>
+                <a href="{{ url_for('answer_vote', answer_id=answer.id, vote="-", user_id=answer.user_id) }}">-1</a></td>
+            <td>{{ answer.image }}</td>
+            {% if answer.is_answer_accepted == 0 %}
+                <form action="{{ url_for('accept_answer', answer_id=answer.id, data="1") }}" method="post">
+                    <td><button type="submit" class="non_accepted_answer"></button></td>
+                </form>
+            {% else %}
+                <form action="{{ url_for('accept_answer', answer_id=answer.id, data="0") }}" method="post">
+                    <td><button type="submit" class="accepted_answer"></button></td>
+                </form>
+            {% endif %}
+            <td class="delete-answer"><a href="/answer/{{ answer.id }}/delete">Delete answer</a></td>
+            <td class="edit-answer"><a href="/answer/{{ answer.id }}/edit">Edit answer</a></td>
+            <td class="add-comment">
+                <form action="{{ url_for('add_new_answers_comment', question_id=data.id, answer_id=answer.id) }}" method="POST">
+                    <textarea name='add_comment_message' rows = "2" cols = "30" required></textarea><br/>
+                    <button class="button-10" type="submit">Add comment</button>
+                </form>
+            </td>
+
+        </tr>
+            <tr>
+                <td>
+                    {% for row in answer_comments %}
+                        {% if row.answer_id == answer.id %}
+                            {{ row.message }}
+                            <a class="delete-link" href="{{ url_for('answer_comment_delete', comment_id=row.id)  }}" ><strong>Delete</strong></a>
+                            <br/><em>{{ row.submission_time }}</em><br/>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('add_new_answer', question_id=data.id) }}">Add new answer</a><br>
+
+    <br/><br/><br/>
+    <form action="{{ url_for('add_new_question_comment', question_id=data.id) }}" method="POST">
+    <label><strong>Comments:</strong><br/><br/>
+        {% for comment in comments %}
+            {{ comment.message }}
+            <a class="delete-link" href="{{ url_for('question_comment_delete', comment_id=comment.id)  }}" ><strong>Delete</strong></a>
+         <br/> <em>{{ comment.submission_time }}</em><br/><br/>
+        {% endfor %}
+        <br/>
+        <textarea name='message' rows = "5" cols = "60" required></textarea>
+    </label>
+    <br/>
+    <button class="button-10" type="submit">Add comment</button>
+    </form>
+    {% endfor %}
+    <br/>
+<a href="/list">Back</a>
+
+</body>
+</html>

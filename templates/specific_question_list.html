@@ -1,0 +1,81 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Specific question list</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+
+<div class="profile-div">
+        <h2>Profile</h2>
+        {% for user in users %}
+        <p><strong class="user-title">{{ user.username }}</strong></p>
+        <p>{{ user.registration_date }}</p>
+        <p><span>Number of asked questions: </span>{{ user.number_of_asked_questions }}</p>
+        <p><span>Number of answers: </span>{{ user.number_of_answers }}</p>
+        <p><span>Number of comments: </span>{{ user.number_of_comments }}</p>
+        <p><span>Reputation: </span>{{ user.reputation }}</p>
+        {% endfor %}
+
+</div>
+    <h2>Questions:</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Image</th>
+        </tr>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td><strong>{{ question.title }}</strong></td>
+            <td>{{ question.message }}</td>
+            <td>{{ question.image }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </br>
+    <h2>Answers:</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Submission Time</th>
+            <th>Vote Number</th>
+            <th>Message</th>
+            <th>image</th>
+        </tr>
+        {% for answer in answers %}
+        <tr>
+            <td>{{ answer.id }}</td>
+            <td><strong>{{ answer.submission_time }}</strong></td>
+            <td>{{ answer.vote_number }}</td>
+            <td>{{ answer.message }}</td>
+            <td>{{ answer.image }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Comments:</h2>
+    <table>
+        <tr>
+            <th>Question Id</th>
+            <th>Submission Time</th>
+            <th>Message</th>
+        </tr>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.question_id }}</td>
+            <td><strong>{{ comment.submission_time }}</strong></td>
+            <td>{{ comment.message }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+<a class="a-hover" onclick="history.back()">Back</a>
+</body>
+</html>

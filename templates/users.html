@@ -1,0 +1,35 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+{% block head %}{% endblock %}
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Registration Date</th>
+        <th>Number of asked questions</th>
+        <th>Number of answers</th>
+        <th>Number of comments</th>
+        <th>Reputation</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+
+        <td><a href="{{ url_for('specific_user_questions', user_id=user.id) }}">{{ user.username }}</a></td>
+        <td>{{ user.registration_date }}</td>
+        <td>{{ user.number_of_asked_questions }}</td>
+        <td>{{ user.number_of_answers }}</td>
+        <td>{{ user.number_of_comments }}</td>
+        <td>{{ user.reputation }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('route_list') }}">Back</a>
+</body>
+</html>

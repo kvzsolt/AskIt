@@ -1,0 +1,68 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Questions</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body>
+    {% block head %}{% endblock %}
+
+<div class="order-and-search">
+    <div class="order-div">
+    <form action="{{ url_for('route_list') }}" class="order-by">
+    <label>Order by:</label>
+    <select name='order_by'>
+        <option value="id">Id</option>
+        <option value="submission_time">Submission time</option>
+        <option value="view_number">View Number</option>
+        <option value="vote_number">Vote Number</option>
+    </select>
+    <label>Order direction:</label>
+    <select name='order_direction'>
+        <option value="ASC">ASC</option>
+        <option value="DESC">DESC</option>
+    </select>
+    <button type="submit">Sort list</button>
+    </form>
+    </div>
+
+    <div class="search-div">
+    <form action="/list" method="get" class="search">
+        <input type="text" name="search" required>
+    </form>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Submission Time</th>
+        <th>View Number</th>
+        <th>Vote Number</th>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Image</th>
+    </tr>
+    {% for row in data %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.submission_time }}</td>
+            <td>{{ row.view_number }}</td>
+            <td>{{ row.vote_number }}
+                <a href="{{ url_for('route_question_votes', question_id=row.id, vote="+", user_id=row.user_id) }}">+1</a>
+                <a href="{{ url_for('route_question_votes', question_id=row.id, vote="-", user_id=row.user_id) }}">-1</a></td>
+            <td><a  href="{{ url_for('route_question_id', question_id=row.id ) }}">
+                {% if search_phrase == None %}
+                    {{ row.title }}
+                {% else %}
+                    {{ row.title|replace(search_phrase, '<mark>' + search_phrase + '</mark>')|safe }}
+                {% endif %}</a></td>
+            <td>{{ row.message }}</td>
+            <td>{{ row.image }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

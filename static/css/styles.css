@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+* { color: #161F6D; }
+body {
+  background: #e6e6e6;
+  font-family: 'Teko', sans-serif;
+}
+.main-title-div {
+  height: 100px;
+  width: 80px;
+  margin: auto;
+}
+.main-title {
+  width: 45px;
+  height: 45px;
+  background-color: red;
+  padding: 0 0 0 8px;
+
+}
+.title {
+  color: white;
+  display: inline;
+  text-shadow: 2px 2px #161F6D;
+}
+.title2 {
+  display: inline;
+  font-size: 22px;
+}
+a {
+  color: red;
+  text-decoration: none;
+}
+a:hover {
+  color: #a10b0b;
+}
+table th {
+    font-family: 'Teko', sans-serif;
+}
+table{
+    width: 100%;
+    font-family: 'Rajdhani', sans-serif;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px #888888;
+    border-collapse: collapse;
+    text-align: center;
+}
+th {
+    padding: 1rem;
+    border-bottom: 1pt solid gray;
+
+}
+
+td {
+  border-bottom: 1pt solid #e6e6e6;
+  padding: 1rem;
+}
+td:nth-last-child(-n+1) {
+    border-bottom: 0;
+}
+.order-and-search {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px #888888;
+  margin: 0 0 15px 0;
+}
+.order-div {
+  width: 60%;
+  height: 50px;
+  display: inline-block;
+  float: left;
+  padding: 12px 0 0 18px;
+}
+.search-div {
+  width: 38%;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  padding: 8px 0 0 0;
+}
+.order-by {
+  display: inline;
+}
+.search input[type=text] {
+  width: 100%;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.email {
+  margin-left: 80px;
+  width: 200px;
+
+}
+.password {
+  margin-left: 53px;
+  width: 200px;
+}
+.password2 {
+  margin-left: 15px;
+  width: 200px;
+}
+
+.add-comment, .delete-answer, .edit-answer {
+    border: none;
+    padding: 1rem;
+}
+
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: red;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.delete-link {
+  color: red;
+  text-decoration: none;
+}
+.delete-link-yes {
+  color: red;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+.login-div {
+  text-align: right;
+  float: right;
+}
+.a-hover:hover {
+  cursor: pointer;
+}
+
+.non_accepted_answer {
+  box-shadow: 0 0 0 2px black;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: slategrey;
+  margin:0 auto;
+}
+
+.accepted_answer {
+  box-shadow: 0 0 0 2px black;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: limegreen;
+  margin:0 auto;
+}
+.reg-div {
+  width: 450px;
+  height: 225px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 5px 38px 5px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 0 gray;
+}
+.add-question {
+  width: 450px;
+  height: 405px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 5px 38px 5px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 0 gray;
+}
+.add-question input {
+  width: 100%;
+
+}
+.add-question-message{
+  width: 100%;
+}
+.login-card {
+  width: 250px;
+  height: 200px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 5px 38px 5px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 0 gray;
+}
+.input-password, .login-email {
+  width: 250px;
+  font-size:18px;
+  display:block;
+  border:none;
+  border-bottom: 1px solid #777778;
+}
+.input-password:focus, .login-email:focus {
+  outline:none;
+}
+
+
+.button-4 {
+  width: 255px;
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #505357;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4::-webkit-details-marker {
+  display: none;
+}
+
+.menu {
+  width: 100%;
+  height: 80px;
+  margin: auto;
+
+}
+
+.menu-left {
+  width: 28%;
+  height: 22px;
+  padding: 30px 40px;
+  float: left;
+}
+.menu-left button {
+  cursor: pointer;
+}
+
+.button-10 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #161F6D;
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+.button-10:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 1px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+
+
+.menu-left button {
+  float: left;
+}
+.menu-middle {
+  width: 28%;
+  height: 80px;
+  float: left;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+.menu-right {
+  width: 28%;
+  height: 22px;
+  padding: 30px 40px;
+  float: right;
+}
+.menu a {
+  padding: 0 10px;
+}
+.profile-div {
+  width: 450px;
+  height: 320px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 5px 38px 5px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 0 gray;
+}
+.user-title {
+  font-size: 24px;
+}
+
+.clickable_non_accepted_answer {
+  box-shadow: 0 0 0 2px black;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: slategrey;
+  margin:0 auto;
+}
+
+.clickable_accepted_answer {
+  box-shadow: 0 0 0 2px black;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: limegreen;
+  margin:0 auto;
+}

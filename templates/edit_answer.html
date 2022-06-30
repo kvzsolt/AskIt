@@ -1,0 +1,26 @@
+{% include "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit answer</title>
+</head>
+<body>
+{% block head %}{% endblock %}
+<table>
+    <tr>
+        {% for answer in answers %}
+        <td class="edit-comment">
+                <form action="#" method="POST">
+                    <textarea name='edit-answer' rows = "2" cols = "30" required>{{ answer.message }}</textarea><br/>
+                    <p><label>{{ 'Image' }}</label></p>
+                    <p><input type="file" name='image' accept="image/jpeg" accept="image/png"></p>
+                    <button type="submit">Edit comment</button>
+                </form>
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+
+</body>
+</html>
